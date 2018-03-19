@@ -143,7 +143,7 @@
 			<div class="col-sm-4">
 				<div class="page-header float-left">
 					<div class="page-title">
-						<h1>Alcohol details</h1>
+						<h1>Availability details</h1>
 					</div>
 				</div>
 			</div>
@@ -152,8 +152,8 @@
 					<div class="page-title">
 						<ol class="breadcrumb text-right">
 							<li><a href="#">Data</a></li>
-							<li><a href="#">Alcohol</a></li>
-							<li class="active">See alcohol details</li>
+							<li><a href="#">Availability</a></li>
+							<li class="active">See availability details</li>
 						</ol>
 					</div>
 				</div>
@@ -174,47 +174,22 @@
 									class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th>Name</th>
-											<th>Brand</th>
-											<th>Category</th>
-											<th>Subcategory</th>
+											<th>Alcohol</th>
+											<th>Place</th>
 											<th>Range</th>
 											<th>Price</th>
-											<th>Action</th>
-
+											<th>Action</th>								
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="alcoholdata : ${alcohols}">
-											<td th:text="${alcoholdata.alcohol.name}"></td>
-											<td th:text="${alcoholdata.alcohol.brand.name}"></td>
-											<td th:text="${alcoholdata.alcoholcatsubcat.category.name}"></td>
-											<td
-												th:text="${alcoholdata.alcoholcatsubcat.subcategory.name}"></td>
-											<!--  <td th:text="${alcohol.ranges.name}">range</td>-->
-											<td>
-												<ul style="margin-bottom: 0;"
-													th:each="range : ${alcoholdata.alcoholandranges}">
-													<li style="margin-left: 20px;"
-														th:text="*{range.alcoholrange.name}"></li>
-												</ul>
-											</td>
-											<td>
-												<ul style="margin-bottom: 0;"
-													th:each="range : ${alcoholdata.alcoholandranges}">
-													<li style="margin-left: 20px;" th:text="*{range.price}"></li>
-												</ul>
-											</td>
-											<!--  <td th:text="${alcohol.places.name}">place</td>-->
-											<!-- <td>
-												<ul style="margin-bottom: 0;"
-													th:each="place : ${alcoholdata.alcohol.places}">
-													<li style="margin-left: 20px;" th:text="*{place.name}"></li>
-												</ul>
-											</td> -->
+										<tr th:each="availability : ${availabilities}">
+											<td th:text="${availability.alcohol.name}"></td>
+											<td th:text="${availability.place.name}"></td>
+											<td th:text="${availability.alcoholrange.name}"></td>
+											<td th:text="${availability.price}"></td>
 											<td><a class="menu-icon fa fa-trash-o" id="edit"
-												th:href="${'/alcohol/delete/' + alcoholdata.alcohol.alcoholId}">Delete
-											</a></td>
+												th:href="${'/availability/delete/' + availability.alcohol.alcoholId +'/'+ availability.place.placeId +'/'+ availability.alcoholrange.rangeId}">Delete
+											</a></td>										
 										</tr>
 
 									</tbody>

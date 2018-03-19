@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pickliq.dao.AlcoholDAOWebInterface;
 import com.pickliq.entities.Alcohol;
-import com.pickliq.entities.Place;
 
 @Service("alcoholServiceWeb")
 public class AlcoholServiceWeb {

@@ -79,7 +79,17 @@
 							<li><i class="fa fa-table"></i><a th:href="@{/listplace}">See
 									place details</a></li>
 						</ul></li>
-
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-check"></i>Availability
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="fa fa-plus"></i><a
+								th:href="@{/addavailability}">Add new availability</a></li>
+							<li><i class="fa fa-table"></i><a
+								th:href="@{/listavailability}">See availability details</a></li>
+						</ul></li>
 
 				</ul>
 			</div>
@@ -160,10 +170,10 @@
 							</div>
 							<div class="card-body">
 								<table id="bootstrap-data-table"
-									class="table table-striped table-bordered" >
+									class="table table-striped table-bordered">
 									<thead>
 										<tr>
-										<th style="display:none">id</th>
+											<th style="display: none">id</th>
 											<th>Name</th>
 											<th>Address</th>
 											<th>Latitude</th>
@@ -172,16 +182,15 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr  th:each="place : ${places}">
-										<td th:text="${place.placeId}" style="display:none">id</td>
+										<tr th:each="place : ${places}">
+											<td th:text="${place.placeId}" style="display: none">id</td>
 											<td th:text="${place.name}" contenteditable="true">name</td>
 											<td th:text="${place.address}">address</td>
 											<td th:text="${place.latitude}">latitude</td>
 											<td th:text="${place.longitude}">longitude</td>
-											<td>
-											
-											<span  class="edit-row fa fa-edit" >Edit</span>
-											<a th:href="${'/place/delete/' + place.placeId}" class=" fa fa-trash-o">Delete</a></td>
+											<td><span class="edit-row fa fa-edit">Edit</span> <a
+												th:href="${'/place/delete/' + place.placeId}"
+												class=" fa fa-trash-o">Delete</a></td>
 
 										</tr>
 
@@ -198,70 +207,75 @@
 		</div>
 		<!-- .content -->
 
-<div>
+		<div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal" style="top: 100px;    right: 200px;    bottom: 50;    left: 400px;">
+			<!-- The Modal -->
+			<div id="myModal" class="modal"
+				style="top: 100px; right: 200px; bottom: 50; left: 400px;">
 
-  <!-- Modal content -->
-  <div class="modal-content" style="background-color:#f1f2f7;">
-    <div class="modal-header">
-    <h2>Edit Place</h2>
-      <span class="close">&times;</span>
-      
-    </div>
-    <div class="modal-body" th:object="${placeWithId}">
-     <form id="editFrom" class="editFrom"  th:action="@{/listplace}">
+				<!-- Modal content -->
+				<div class="modal-content" style="background-color: #f1f2f7;">
+					<div class="modal-header">
+						<h2>Edit Place</h2>
+						<span class="close">&times;</span>
 
-											<div class="form-group has-success">
-												<label for="cc-name" class="control-label mb-1">Name</label>
-												<input id="placeName" type="text" name="name" class="form-control" />
-												
-											</div>
-											<div class="form-group has-success">
-												<label for="cc-name" class="control-label mb-1">Address</label>
-												<input id="placeAddress" type="text"  name="address" class="form-control"/>
-											</div>
-											<div class="form-group has-success">
-												<label for="cc-name" class="control-label mb-1">Latitude</label>
-												<input id="placeLatitude" type="text"  name="latitude" class="form-control"/>
-											</div>
-											<div class="form-group has-success">
-												<label for="cc-name" class="control-label mb-1">Longitude</label>
-												<input id="placeLongitude" type="text"  name="longitude" class="form-control"/>
-											</div>
+					</div>
+					<div class="modal-body" th:object="${placeWithId}">
+						<form id="editFrom" class="editFrom" th:action="@{/listplace}">
 
-											<div>
-												<button id="payment-button" 
-													class="btn btn-lg btn-info btn-block submit-row"
-													style="float: right; width: 35%; background-color: #77A39E; border-color: #77A39E;">
+							<div class="form-group has-success">
+								<label for="cc-name" class="control-label mb-1">Name</label> <input
+									id="placeName" type="text" name="name" class="form-control" />
 
-													<span id="payment-button-amount">Edit</span> <span
-														id="payment-button-sending" style="display: none;">Loading…</span>
-												</button>
-											</div>
-										</form>
-    </div>
-   <!--  <div class="modal-footer">
+							</div>
+							<div class="form-group has-success">
+								<label for="cc-name" class="control-label mb-1">Address</label>
+								<input id="placeAddress" type="text" name="address"
+									class="form-control" />
+							</div>
+							<div class="form-group has-success">
+								<label for="cc-name" class="control-label mb-1">Latitude</label>
+								<input id="placeLatitude" type="text" name="latitude"
+									class="form-control" />
+							</div>
+							<div class="form-group has-success">
+								<label for="cc-name" class="control-label mb-1">Longitude</label>
+								<input id="placeLongitude" type="text" name="longitude"
+									class="form-control" />
+							</div>
+
+							<div>
+								<button id="payment-button"
+									class="btn btn-lg btn-info btn-block submit-row"
+									style="float: right; width: 35%; background-color: #77A39E; border-color: #77A39E;">
+
+									<span id="payment-button-amount">Edit</span> <span
+										id="payment-button-sending" style="display: none;">Loading…</span>
+								</button>
+							</div>
+						</form>
+					</div>
+					<!--  <div class="modal-footer">
       <h3>Modal Footer</h3>
     </div> -->
-  </div>
+				</div>
 
-</div>
-</div>
+			</div>
+		</div>
 	</div>
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
 	<script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-	 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="assets/js/placeJs.js"></script>
+	<script type="text/javascript"
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="assets/js/placeJs.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
+		
+	</script>
 
-</script>
 
-	
 	<script src="assets/js/popper.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
@@ -278,13 +292,13 @@
 	<script src="assets/js/lib/data-table/buttons.print.min.js"></script>
 	<script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
 	<script src="assets/js/lib/data-table/datatables-init.js"></script>
-	
-	
 
 
-	
 
-	
+
+
+
+
 
 
 </body>

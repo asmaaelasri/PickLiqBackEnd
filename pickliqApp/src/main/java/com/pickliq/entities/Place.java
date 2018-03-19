@@ -69,7 +69,7 @@ public class Place implements Serializable{
 		this.longitude = longitude;
 	}
 	
-	@ManyToMany(mappedBy="places")
+	/*@ManyToMany(mappedBy="places")
     public Set<Alcohol> alcohols;
 	
 	public Set<Alcohol> getAlcohols() {
@@ -77,6 +77,6 @@ public class Place implements Serializable{
 	}
 	public void setAlcohols(Set<Alcohol> alcohols) {
 		this.alcohols = alcohols;
-	}
+	}*/
 
 }

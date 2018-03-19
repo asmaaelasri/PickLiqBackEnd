@@ -82,6 +82,17 @@
 									place details</a></li>
 						</ul></li>
 
+					<li class="menu-item-has-children dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="menu-icon fa fa-check"></i>Availability
+					</a>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="fa fa-plus"></i><a
+								th:href="@{/addavailability}">Add new availability</a></li>
+							<li><i class="fa fa-table"></i><a
+								th:href="@{/listavailability}">See availability details</a></li>
+						</ul></li>
 
 				</ul>
 			</div>
@@ -223,9 +234,11 @@
 										<div class="row form-group">
 											<div class="col col-md-3"></div>
 											<div class="col-12 col-md-9">
-												<input type="button" onclick="location.href='/listalcohol';" class="btn btn-lg btn-info btn-block"
-													style="float: right; width: 35%; background-color: #272c33; border-color: #77A39E;" value="Done!"/>
-												
+												<input type="button" onclick="location.href='/listalcohol';"
+													class="btn btn-lg btn-info btn-block"
+													style="float: right; width: 35%; background-color: #272c33; border-color: #77A39E;"
+													value="Done!" />
+
 											</div>
 
 										</div>

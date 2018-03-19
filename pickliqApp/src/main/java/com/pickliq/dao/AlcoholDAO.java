@@ -10,12 +10,13 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pickliq.entities.About;
 import com.pickliq.entities.Alcohol;
 import com.pickliq.entities.AlcoholCatSubcat;
 import com.pickliq.entities.AlcoholInfos;
 import com.pickliq.entities.AlcoholandRanges;
 import com.pickliq.entities.Category;
-import com.pickliq.entities.Place;
+import com.pickliq.entities.Dryday;
 import com.pickliq.entities.Subcategory;
 
 @Repository
@@ -63,6 +64,20 @@ public class AlcoholDAO {
 			}
 		}		
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	public About getAbout() {
+		Session session = this.getSession();
+		List<About> about = session.createQuery("from About").list();	
+		return about.get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Dryday> getDrydays() {
+		Session session = this.getSession();
+		List<Dryday> drydays = session.createQuery("from Dryday").list();	
+		return drydays;
 	}
 
 

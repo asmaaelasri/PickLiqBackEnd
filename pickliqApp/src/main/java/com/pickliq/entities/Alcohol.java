@@ -1,9 +1,9 @@
 package com.pickliq.entities;
 
 import java.io.Serializable;
+
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,10 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Alcohol implements Serializable {
 	@Id
@@ -64,11 +63,11 @@ public class Alcohol implements Serializable {
 //        this.alcoholandranges = alcoholandranges;
 //    }
 	
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToMany
     @JoinTable(name="place_Alcohol",joinColumns=@JoinColumn(name="alcoholId", referencedColumnName="alcoholId"),
     	      inverseJoinColumns=@JoinColumn(name="placeId", referencedColumnName="placeId"))
-    public List<Place> places;
+    public List<Place> places;*/
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	  @JoinColumn(name="brandId")
@@ -86,12 +85,12 @@ public class Alcohol implements Serializable {
 //	public void setRanges(List<Alcoholrange> ranges) {
 //		this.ranges = ranges;
 //	}
-	public List<Place> getPlaces() {
+	/*public List<Place> getPlaces() {
 		return places;
 	}
 	public void setPlaces(List<Place> places) {
 		this.places = places;
-	}
+	}*/
 	
 	
 }

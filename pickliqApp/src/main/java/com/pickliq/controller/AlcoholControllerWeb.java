@@ -15,12 +15,15 @@ import com.pickliq.entities.Alcohol;
 import com.pickliq.entities.AlcoholCatSubcat;
 import com.pickliq.entities.AlcoholandAlcoholcatsubcat;
 import com.pickliq.entities.AlcoholandRanges;
+import com.pickliq.entities.Availability;
 import com.pickliq.entities.AlcoholandRanges.Pkk;
+import com.pickliq.entities.Availability.AvailabilityPk;
 import com.pickliq.entities.AlcoholCatSubcat.Pk;
 import com.pickliq.webservice.AlcoholCatSubcatServiceWeb;
 import com.pickliq.webservice.AlcoholServiceWeb;
 import com.pickliq.webservice.AlcoholandRangesServiceWeb;
 import com.pickliq.webservice.AlcoholrangeServiceWeb;
+import com.pickliq.webservice.AvailabilityServiceWeb;
 import com.pickliq.webservice.BrandServiceWeb;
 import com.pickliq.webservice.PlaceServiceWeb;
 
@@ -38,6 +41,10 @@ public class AlcoholControllerWeb {
 	AlcoholCatSubcatServiceWeb alcoholcatsubcatServiceWeb;
 	@Autowired
 	PlaceServiceWeb placeServiceWeb;
+	
+	@Autowired
+	AvailabilityServiceWeb availabilityServiceWeb;
+	
 
 	@RequestMapping(value = "/addalcohol")
 	public String addalcohol(Model model) {		
@@ -120,6 +127,14 @@ public class AlcoholControllerWeb {
 		alcoholcatsubcatServiceWeb.deleteAlcoholCatSubcat(alcoholServiceWeb.getAlcoholById(alcoholId));
         alcoholandrangesServiceWeb.deleteAlcoholandRanges(alcoholServiceWeb.getAlcoholById(alcoholId));
         alcoholServiceWeb.deleteAlcohol(alcoholId);
+        Iterator<Availability> it = availabilityServiceWeb.listAllAvailabilities().iterator();
+		while (it.hasNext()) {
+			Availability availability = it.next();
+			AvailabilityPk pk = availability.getAvailabilityPk();
+			if(pk.getAlcoholId()==alcoholId) {
+				availabilityServiceWeb.deleteAvailability(pk);
+			}
+		}	
         return "redirect:/listalcohol";
     }
 

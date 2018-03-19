@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pickliq.entities.About;
 import com.pickliq.entities.Alcohol;
 import com.pickliq.entities.AlcoholInfos;
+import com.pickliq.entities.Dryday;
 import com.pickliq.webservice.AlcoholService;
 
 @RestController
@@ -32,5 +34,15 @@ public class AlcoholController {
 	@RequestMapping(value = "/getAllAlcohols", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<Alcohol> getAlcohols() {
 		return alcoholService.getAlcohols();
+	}
+	
+	@RequestMapping(value = "/getAbout", method = RequestMethod.GET, headers = "Accept=application/json")
+	public About getAbout() {
+		return alcoholService.getAbout();
+	}
+	
+	@RequestMapping(value = "/getDrydays", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<Dryday> getDrydays() {
+		return alcoholService.getDrydays();
 	}
 }

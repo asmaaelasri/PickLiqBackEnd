@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import com.pickliq.entities.Alcohol;
 import com.pickliq.entities.AlcoholCatSubcat;
 import com.pickliq.entities.AlcoholInfos;
-import com.pickliq.entities.AlcoholandAlcoholcatsubcat;
 import com.pickliq.entities.AlcoholandRanges;
 import com.pickliq.entities.Category;
 

@@ -142,7 +142,7 @@
 			<div class="col-sm-4">
 				<div class="page-header float-left">
 					<div class="page-title">
-						<h1>Add new alcohol</h1>
+						<h1>Add new availability</h1>
 					</div>
 				</div>
 			</div>
@@ -151,8 +151,8 @@
 					<div class="page-title">
 						<ol class="breadcrumb text-right">
 							<li><a href="#">Home</a></li>
-							<li><a href="#">Alcohol</a></li>
-							<li class="active">Add new alcohol</li>
+							<li><a href="#">Availability</a></li>
+							<li class="active">Add new availabilityl</li>
 						</ol>
 					</div>
 				</div>
@@ -167,59 +167,58 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-header">
-								<strong class="card-title">New alcohol</strong>
+								<strong class="card-title">New availability</strong>
 							</div>
 							<div class="card-body">
 								<!-- Credit Card -->
 								<div id="pay-invoice">
 									<div class="card-body">
 
-										<form th:action="@{/addAlcohol}" method="post"
+										<form th:action="@{/addAvailability}" method="post"
 											novalidate="novalidate">
-											<div th:object="${alcohol}">
+											<div th:object="${availability}">
 
-
-
-
-												<div class="form-group has-success">
-													<label for="cc-name" class="control-label mb-1">Name</label>
-													<input id="cc-name" th:field="*{name}" name="cc-name"
-														type="text" class="form-control cc-name valid"
-														data-val="true"
-														data-val-required="Please enter the name on card"
-														autocomplete="cc-name" aria-required="true"
-														aria-invalid="false" aria-describedby="cc-name-error"></input>
-													<span class="help-block field-validation-valid"
-														data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
-												</div>
 
 												<div class="row form-group">
 													<div class="col col-md-3">
-														<label for="select" class=" form-control-label">Brand</label>
+														<label for="select" class=" form-control-label">Alcohol</label>
 													</div>
 													<div class="col-12 col-md-9">
-														<select name="select" id="select" th:field="*{brand}"
+														<select name="select" id="select" th:field="*{alcohol}"
 															class="form-control">
-															<option th:each="brand : ${brands}"
-																th:value="${brand.brandId}" th:utext="${brand.name}" />
+															<option th:each="alcohol : ${alcohols}"
+																th:value="${alcohol.alcoholId}" th:utext="${alcohol.name}" />
 														</select>
 													</div>
 												</div>
-												<div th:object="${alcoholandranges}">
-													<div class="row form-group">
-														<div class="col col-md-3">
-															<label for="select" class=" form-control-label">Range</label>
-														</div>
-														<div class="col-12 col-md-9">
-															<select name="select" id="selectrange"
-																th:field="*{alcoholrange}" class="form-control">
-																<option th:each="alcoholrange : ${alcoholranges}"
-																	th:value="${alcoholrange.rangeId}"
-																	th:utext="${alcoholrange.name}" />
-															</select>
-														</div>
+												
+												<div class="row form-group">
+													<div class="col col-md-3">
+														<label for="select" class=" form-control-label">Place</label>
 													</div>
-													<div class="row form-group">
+													<div class="col-12 col-md-9">
+														<select name="select" id="select" th:field="*{place}"
+															class="form-control">
+															<option th:each="place : ${places}"
+																th:value="${place.placeId}" th:utext="${place.name}" />
+														</select>
+													</div>
+												</div>
+												
+												<div class="row form-group">
+													<div class="col col-md-3">
+														<label for="select" class=" form-control-label">Range</label>
+													</div>
+													<div class="col-12 col-md-9">
+														<select name="select" id="select" th:field="*{alcoholrange}"
+															class="form-control">
+															<option th:each="alcoholrange : ${alcoholranges}"
+																th:value="${alcoholrange.rangeId}" th:utext="${alcoholrange.name}" />
+														</select>
+													</div>
+												</div>
+												
+												<div class="row form-group">
 														<div class="col col-md-3">
 															<label for="select" class=" form-control-label">Price</label>
 														</div>
@@ -235,69 +234,16 @@
 
 														</div>
 													</div>
-
-												</div>
-
-												<!-- <div class="row form-group">
-													<div class="col col-md-3">
-														<label for="select" class=" form-control-label">Place</label>
-													</div>
-													<div class="col-12 col-md-9">
-														<select name="select" th:field="*{places}"
-															multiple="multiple" id="select" class="form-control">
-															<option th:each="place : ${places}"
-																th:value="${place.placeId}" th:utext="${place.name}" />
-														</select>
-													</div>
-												</div> -->
+																								
 											</div>
-											<div th:object="${alcoholcatsubcat}">
-												<div class="row form-group">
-													<div class="col col-md-3">
-														<label for="select" class=" form-control-label">Category</label>
-													</div>
-													<div class="col-12 col-md-9">
-														<select th:field="*{category}" name="select"
-															id="selectcategory" class="form-control">
-															<option th:value="1">Beer</option>
-															<option value="2">Whiskey</option>
-															<option value="3">Brandy</option>
-															<option value="4">Vodka</option>
-															<option value="5">Rum</option>
-															<option value="6">Gin</option>
-															<option value="7">Tequila</option>
-															<option value="8">Wine</option>
-															<option value="9">Breezer</option>
-															<option value="10">Champagne</option>
-															<option value="11">Liqueur</option>
-
-
-															<!--  <option th:value="${category.categoryId}"
-															th:utext="${category.name}" />-->
-														</select>
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col col-md-3">
-														<label for="select" class=" form-control-label">Subcategory</label>
-													</div>
-													<div class="col-12 col-md-9">
-														<select th:field="*{subcategory}" name="select"
-															id="selectsubcategory" class="form-control">
-															<option value="1">Lager</option>
-															<option value="2">Strong</option>
-														</select>
-													</div>
-												</div>
-											</div>
-
+							
 
 											<div>
 												<button id="payment-button" type="submit"
 													class="btn btn-lg btn-info btn-block"
 													style="float: right; width: 35%; background-color: #77A39E; border-color: #77A39E;">
 
-													<span id="payment-button-amount">Next</span> <span
+													<span id="payment-button-amount">Add</span> <span
 														id="payment-button-sending" style="display: none;">Loading…</span>
 												</button>
 											</div>
@@ -340,51 +286,6 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-
-	<script type="text/javascript">
-		$(document).ready(
-				function() {
-					$("#selectcategory").change(
-							function() {
-								var val = $("#selectcategory").val();
-								var html = "";
-								if (val == "8") {
-									html = "";
-									html += '<option value="'+4+'">' + "Red"
-											+ '</option>'
-											+ '<option value="'+5+'">' + "Rose"
-											+ '</option>'
-											+ '<option value="'+3+'">'
-											+ "White" + '</option>';
-									$("#selectsubcategory").html(html);
-								} else if (val == "1") {
-									html = "";
-									html += '<option value="'+1+'">' + "Lager"
-											+ '</option>'
-											+ '<option value="'+2+'">'
-											+ "Strong" + '</option>';
-									$("#selectsubcategory").html(html);
-								} else {
-									html = "";
-									html += '<option value="'+6+'">' + "None"
-											+ '</option>';
-									$("#selectsubcategory").html(html);
-								}
-							});
-				});
-	</script>
-	<script>
-		document.getElementById("addtolist").onclick = function() {
-			var list = document.getElementById("pricelist");
-			var text = document.getElementById("price").value;
-			var option = document.createElement("option");
-			option.text = text;
-			list.add(option);
-			document.getElementById("price").value = "";
-			html = '<option th:value="'+text+'">' + text + '</option>';
-			//$("#pricelist").html(html);
-		}
-	</script>
 
 </body>
 </html>
